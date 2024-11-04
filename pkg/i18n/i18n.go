@@ -142,5 +142,5 @@ func (i *I18n) t(lang language.Tag, key string, args ...any) string {
 
 func (i *I18n) LoadDefaultLoales() {
 	i.Bundle.MustAddMessages(language.English, locales.RegisterEn()...)
-	i.Bundle.MustAddMessages(language.Chinese, locales.RegisterZhCN()...)
+	i.Bundle.MustAddMessages(language.SimplifiedChinese, locales.RegisterZhCN()...)
 }
