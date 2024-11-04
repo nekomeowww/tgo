@@ -26,7 +26,7 @@ func (h *helpCommandHandler) Command() string {
 }
 
 func (h *helpCommandHandler) CommandHelp(c *Context) string {
-	return c.T("system.commands.groups.basic.commands.help.help")
+	return c.T("telegram.system.commands.groups.basic.commands.help.help")
 }
 
 func (h *helpCommandHandler) handle(c *Context) (Response, error) {

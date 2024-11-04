@@ -52,7 +52,7 @@ func NewDispatcher(logger *logger.Logger) *Dispatcher {
 	d.startCommandHandler.helpCommandHandler = d.helpCommand
 
 	d.OnCommandGroup(func(c *Context) string {
-		return c.T("system.commands.groups.basic.name")
+		return c.T("telegram.system.commands.groups.basic.name")
 	}, []Command{
 		{Command: d.helpCommand.Command(), HelpMessage: d.helpCommand.CommandHelp, Handler: NewHandler(d.helpCommand.handle)},
 		{Command: d.cancelCommand.Command(), HelpMessage: d.cancelCommand.CommandHelp, Handler: NewHandler(d.cancelCommand.handle)},
