@@ -135,6 +135,26 @@ func NewBot(callOpts ...CallOption) (*Bot, error) {
 	if opts.token == "" {
 		return nil, errors.New("must supply a valid telegram bot token in configs or environment variable")
 	}
+	if opts.logger == nil {
+		logger, err := logger.NewLogger(logger.WithLevel(zap.DebugLevel), logger.WithAppName("tgo"), logger.WithNamespace("nekomeowww"))
+		if err != nil {
+			return nil, err
+		}
+
+		opts.logger = logger
+	}
+	if opts.i18n == nil {
+		i18n, err := i18n.NewI18n(i18n.WithLogger(opts.logger))
+		if err != nil {
+			return nil, err
+		}
+
+		i18n.LoadDefaultLoales()
+	}
+	if opts.dispatcher == nil {
+		dispatcher := NewDispatcher(opts.logger)
+		opts.dispatcher = dispatcher
+	}
 
 	var err error
 	var b *tgbotapi.BotAPI
@@ -153,6 +173,7 @@ func NewBot(callOpts ...CallOption) (*Bot, error) {
 		opts:       opts,
 		logger:     opts.logger,
 		dispatcher: opts.dispatcher,
+		i18n:       opts.i18n,
 	}
 
 	bot.puller = channelx.NewPuller[tgbotapi.Update]().
