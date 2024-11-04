@@ -145,10 +145,6 @@ func (c *Context) withCallbackQueryActionData(data string) {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 
-	if c.Update.CallbackQuery == nil {
-		return
-	}
-
 	c.isCallbackQuery = true
 	c.callBackQueryActionData = data
 }

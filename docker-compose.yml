@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  # the default Redis service that helps services to store data
+  redis_local:
+    image: redis:7
+    restart: unless-stopped
+    # environment:
+    #   - REDIS_PASSWORD=123456
+    command: >
+      /bin/sh -c "redis-server $${REDIS_PASSWORD:+--requirepass \"$$REDIS_PASSWORD\"}"
+    ports:
+      - 6379:6379
+    volumes:
+      - ./.redis/data:/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'redis-cli -e $${REDIS_PASSWORD:+-a "$$REDIS_PASSWORD"} --no-auth-warning ping',
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
