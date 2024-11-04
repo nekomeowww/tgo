@@ -1,6 +1,6 @@
 # `tgo`
 
-Telegram Bot API for Go, with [@nekomeowww](https://github.com/nekomeowww)'s favor, born from varies of Telegram Bot projects:
+Telegram Bot API for Go, with [@nekomeowww](https://github.com/nekomeowww)'s flavor, born from varies of Telegram Bot projects:
 
 - [`insights-bot`](https://github.com/nekomeowww/insights-bot)
 - [`perobot`](https://github.com/nekomeowww/perobot)
