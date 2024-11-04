@@ -29,7 +29,7 @@ import (
 	"github.com/nekomeowww/xo/logger"
 )
 
-type botServiceOptions struct {
+type botOptions struct {
 	webhookURL  string
 	webhookPort string
 	token       string
@@ -41,65 +41,65 @@ type botServiceOptions struct {
 	i18n        *i18n.I18n
 }
 
-type CallOption func(*botServiceOptions)
+type CallOption func(*botOptions)
 
 func WithWebhookURL(url string) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.webhookURL = url
 	}
 }
 
 func WithWebhookPort(port string) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.webhookPort = port
 	}
 }
 
 func WithToken(token string) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.token = token
 	}
 }
 
 func WithAPIEndpoint(endpoint string) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.apiEndpoint = endpoint
 	}
 }
 
 func WithDispatcher(dispatcher *Dispatcher) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.dispatcher = dispatcher
 	}
 }
 
 func WithLogger(logger *logger.Logger) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.logger = logger
 	}
 }
 
 func WithQueue(queue queue.Queue) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.queue = queue
 	}
 }
 
 func WithTTLCache(ttlcache ttlcache.TTLCache) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.ttlcache = ttlcache
 	}
 }
 
 func WithRueidis(rueidis rueidis.Client) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.queue = queue.NewRueidisQueue(rueidis)
 		o.ttlcache = ttlcache.NewRueidisTTLCache(rueidis)
 	}
 }
 
 func WithI18n(i18n *i18n.I18n) CallOption {
-	return func(o *botServiceOptions) {
+	return func(o *botOptions) {
 		o.i18n = i18n
 	}
 }
@@ -107,7 +107,7 @@ func WithI18n(i18n *i18n.I18n) CallOption {
 type Bot struct {
 	*tgbotapi.BotAPI
 
-	opts       *botServiceOptions
+	opts       *botOptions
 	logger     *logger.Logger
 	dispatcher *Dispatcher
 	i18n       *i18n.I18n
@@ -122,8 +122,8 @@ type Bot struct {
 	puller *channelx.Puller[tgbotapi.Update]
 }
 
-func NewBotService(callOpts ...CallOption) (*Bot, error) {
-	opts := &botServiceOptions{
+func NewBot(callOpts ...CallOption) (*Bot, error) {
+	opts := &botOptions{
 		queue:    queue.NewInMemoryQueue(),
 		ttlcache: ttlcache.NewInMemoryTTLCache(),
 	}

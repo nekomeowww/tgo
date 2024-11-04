@@ -1,0 +1,13 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions: []
+dictionaries: []
+words:
+  - nekomeowww
+  - rueidis
+  - samber
+  - stretchr
+  - tgbotapi
+  - ttlcache
+ignoreWords: []
+import: []
