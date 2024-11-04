@@ -29,7 +29,8 @@ func (c *InMemoryTTLCache) Get(_ context.Context, key string) (mo.Option[string]
 
 	if cache, ok := c.mKeyMapping[key]; ok {
 		if value, found := cache.Get(key); found {
-			return mo.Some(value.(string)), nil
+			str, _ := value.(string)
+			return mo.Some(str), nil
 		}
 	}
 
