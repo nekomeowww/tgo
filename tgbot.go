@@ -106,11 +106,11 @@ func WithI18n(i18n *i18n.I18n) CallOption {
 
 type Bot struct {
 	*tgbotapi.BotAPI
+	*Dispatcher
 
-	opts       *botOptions
-	logger     *logger.Logger
-	dispatcher *Dispatcher
-	i18n       *i18n.I18n
+	opts   *botOptions
+	logger *logger.Logger
+	i18n   *i18n.I18n
 
 	webhookServer     *http.Server
 	webhookUpdateChan chan tgbotapi.Update
@@ -170,15 +170,15 @@ func NewBot(callOpts ...CallOption) (*Bot, error) {
 
 	bot := &Bot{
 		BotAPI:     b,
+		Dispatcher: opts.dispatcher,
 		opts:       opts,
 		logger:     opts.logger,
-		dispatcher: opts.dispatcher,
 		i18n:       opts.i18n,
 	}
 
 	bot.puller = channelx.NewPuller[tgbotapi.Update]().
 		WithHandler(func(update tgbotapi.Update) {
-			bot.dispatcher.Dispatch(bot.BotAPI, bot.Bot(), bot.i18n, update)
+			bot.Dispatcher.Dispatch(bot.BotAPI, bot.Bot(), bot.i18n, update)
 		}).
 		WithPanicHandler(func(panicValues *panics.Recovered) {
 			bot.logger.Error("panic occurred", zap.Any("panic", panicValues))
