@@ -150,6 +150,7 @@ func NewBot(callOpts ...CallOption) (*Bot, error) {
 		}
 
 		i18n.LoadDefaultLoales()
+		opts.i18n = i18n
 	}
 	if opts.dispatcher == nil {
 		dispatcher := NewDispatcher(opts.logger)
