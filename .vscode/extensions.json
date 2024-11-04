@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "mikestead.dotenv",
+    "EditorConfig.EditorConfig",
+    "yzhang.markdown-all-in-one",
+    "redhat.vscode-yaml",
+    "golang.go",
+  ]
+}
