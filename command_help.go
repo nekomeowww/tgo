@@ -73,11 +73,13 @@ func (h *helpCommandHandler) handle(c *Context) (Response, error) {
 			commandHelpMessages = append(commandHelpMessages, commandHelpMessage.String())
 		}
 
-		commandGroupHelpMessages = append(commandGroupHelpMessages, fmt.Sprintf("%s%s", lo.Ternary(
-			group.name(c) != "",
-			fmt.Sprintf("<b>%s</b>\n\n", EscapeHTMLSymbols(group.name(c))), ""),
-			strings.Join(commandHelpMessages, "\n"),
-		))
+		if group.name != nil {
+			commandGroupHelpMessages = append(commandGroupHelpMessages, fmt.Sprintf("%s%s", lo.Ternary(
+				group.name(c) != "",
+				fmt.Sprintf("<b>%s</b>\n\n", EscapeHTMLSymbols(group.name(c))), ""),
+				strings.Join(commandHelpMessages, "\n"),
+			))
+		}
 	}
 
 	return c.

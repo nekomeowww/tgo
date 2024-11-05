@@ -2,7 +2,9 @@ package tgo
 
 import (
 	"regexp"
+	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/nekomeowww/xo"
 )
@@ -155,4 +157,21 @@ func MapMemberStatusToChineseText(memberStatus MemberStatus) string {
 	default:
 		return "未知"
 	}
+}
+
+func FormatFullNameAndUsername(fullName, username string) string {
+	if utf8.RuneCountInString(fullName) >= 10 && username != "" {
+		return username
+	}
+
+	return strings.ReplaceAll(fullName, "#", "")
+}
+
+func FormatChatID(chatID int64) string {
+	chatIDStr := strconv.FormatInt(chatID, 10)
+	if strings.HasPrefix(chatIDStr, "-100") {
+		return strings.TrimPrefix(chatIDStr, "-100")
+	}
+
+	return chatIDStr
 }

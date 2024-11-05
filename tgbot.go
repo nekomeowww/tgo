@@ -9,8 +9,12 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"os"
+	"os/signal"
 	"strconv"
 	"strings"
+	"sync"
+	"syscall"
 	"time"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -257,28 +261,61 @@ func (b *Bot) startPullUpdates() {
 }
 
 func (b *Bot) Start(ctx context.Context) error {
-	return fo.Invoke0(ctx, func() error {
+	err := fo.Invoke0(ctx, func() error {
 		if b.opts.webhookURL != "" && b.webhookServer != nil {
 			l, err := net.Listen("tcp", b.webhookServer.Addr)
 			if err != nil {
 				return err
 			}
 
-			go func() {
-				err := b.webhookServer.Serve(l)
-				if err != nil && err != http.ErrServerClosed {
-					b.logger.Fatal("", zap.Error(err))
-				}
-			}()
+			err = b.webhookServer.Serve(l)
+			if err != nil && err != http.ErrServerClosed {
+				b.logger.Fatal("", zap.Error(err))
+			}
 
 			b.logger.Info("Telegram Bot webhook server is listening", zap.String("addr", b.webhookServer.Addr))
 		}
 
-		b.startPullUpdates()
-		b.webhookStarted = true
-
 		return nil
 	})
+	if err != nil {
+		return err
+	}
+
+	if b.opts.webhookURL != "" && b.webhookServer != nil {
+		b.webhookStarted = true
+	}
+
+	b.startPullUpdates()
+
+	return nil
+}
+
+func (b *Bot) Bootstrap(ctx context.Context) {
+	var wg sync.WaitGroup
+	wg.Add(1)
+
+	go func() {
+		b.Start(ctx)
+		wg.Done()
+	}()
+
+	wg.Add(1)
+
+	go func() {
+		osCh := make(chan os.Signal, 1)
+		signal.Notify(osCh, os.Interrupt, syscall.SIGTERM)
+
+		for {
+			select {
+			case <-osCh:
+				wg.Done()
+				b.Stop(context.Background())
+			}
+		}
+	}()
+
+	wg.Wait()
 }
 
 func (b *Bot) Bot() *BotAPI {
