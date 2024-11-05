@@ -4,7 +4,7 @@
 ![](https://github.com/nekomeowww/tgo/actions/workflows/ci.yml/badge.svg)
 [![](https://goreportcard.com/badge/github.com/nekomeowww/tgo)](https://goreportcard.com/report/github.com/nekomeowww/tgo)
 
-Telegram Bot API for Go, with [@nekomeowww](https://github.com/nekomeowww)'s flavor, born from varies of Telegram Bot projects:
+Telegram Bot framework & utilities for Go, built on top of telegram-bot-api, can be used as drop-in-replacement. With [@nekomeowww](https://github.com/nekomeowww)'s flavor, born from varies of Telegram Bot projects.
 
 - [`insights-bot`](https://github.com/nekomeowww/insights-bot)
 - [`perobot`](https://github.com/nekomeowww/perobot)
