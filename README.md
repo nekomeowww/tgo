@@ -124,3 +124,18 @@ func main() {
 	}
 }
 ```
+
+## 👪 Other family members of `anyo`
+
+- [nekomeowww/xo](https://github.com/nekomeowww/xo): Mega utility & helper & extension library for Go
+- [nekomeowww/fo](https://github.com/nekomeowww/fo): Functional programming utility library for Go
+- [nekomeowww/bo](https://github.com/nekomeowww/bo): BootKit for easily bootstrapping multi-goroutine applications, CLIs
+- [nekomeowww/wso](https://github.com/nekomeowww/wso): WebSocket utility library for Go
+
+## 🎆 Other cool related Golang projects I made & maintained
+
+- [nekomeowww/factorio-rcon-api](https://github.com/nekomeowww/factorio-rcon-api): Fully implemented wrapper for Factorio RCON as API
+- [Kollama - Ollama Operator](https://github.com/knoway-dev/knoway): Kubernetes Operator for managing Ollama instances across multiple clusters
+- [lingticio/llmg](https://github.com/lingticio/llmg): LLM Gateway with gRPC, WebSocket, and RESTful API adapters included.
+- [nekomeowww/hyphen](https://github.com/nekomeowww/hyphen): An elegant URL Shortener service
+- [nekomeowww/insights-bot](https://github.com/nekomeowww/insights-bot): Webpage summary & chat history recap bot for Telegram
