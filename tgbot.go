@@ -298,6 +298,7 @@ func (b *Bot) Bootstrap(ctx context.Context) {
 
 	go func() {
 		_ = b.Start(ctx)
+
 		wg.Done()
 	}()
 
