@@ -293,10 +293,11 @@ func (b *Bot) Start(ctx context.Context) error {
 
 func (b *Bot) Bootstrap(ctx context.Context) {
 	var wg sync.WaitGroup
+
 	wg.Add(1)
 
 	go func() {
-		b.Start(ctx)
+		_ = b.Start(ctx)
 		wg.Done()
 	}()
 
@@ -306,12 +307,9 @@ func (b *Bot) Bootstrap(ctx context.Context) {
 		osCh := make(chan os.Signal, 1)
 		signal.Notify(osCh, os.Interrupt, syscall.SIGTERM)
 
-		for {
-			select {
-			case <-osCh:
-				wg.Done()
-				b.Stop(context.Background())
-			}
+		for range osCh {
+			wg.Done()
+			_ = b.Stop(context.Background())
 		}
 	}()
 
