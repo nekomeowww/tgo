@@ -66,7 +66,7 @@ func processMessageError(ctx *Context, chatID int64, msgError MessageError) Resp
 					sourceReplyMarkup.InlineKeyboard[i],
 				)
 
-				inlineKeyboardsAreTheSame = !(len(diff1) != 0 || len(diff2) != 0)
+				inlineKeyboardsAreTheSame = len(diff1) == 0 && len(diff2) == 0
 
 				break
 			}
