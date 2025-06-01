@@ -3,7 +3,7 @@ version: "3.9"
 services:
   # the default Redis service that helps services to store data
   redis_local:
-    image: redis:7
+    image: redis:8
     restart: unless-stopped
     # environment:
     #   - REDIS_PASSWORD=123456
