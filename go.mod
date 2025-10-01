@@ -2,28 +2,28 @@ module github.com/nekomeowww/tgo
 
 go 1.24.0
 
-toolchain go1.24.4
+toolchain go1.25.1
 
 require (
 	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
-	github.com/gookit/color v1.5.4
+	github.com/gookit/color v1.6.0
 	github.com/nekomeowww/fo v1.6.0
 	github.com/nekomeowww/xo v1.17.0
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/redis/rueidis v1.0.62
+	github.com/redis/rueidis v1.0.66
 	github.com/samber/lo v1.51.0
-	github.com/samber/mo v1.14.0
+	github.com/samber/mo v1.16.0
 	github.com/sourcegraph/conc v0.3.0
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	go.uber.org/zap v1.27.0
-	golang.org/x/text v0.26.0
+	golang.org/x/text v0.29.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
 	entgo.io/ent v0.14.4 // indirect
-	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/google/uuid v1.6.0 // indirect
