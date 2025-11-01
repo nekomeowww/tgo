@@ -2,7 +2,7 @@ module github.com/nekomeowww/tgo
 
 go 1.24.0
 
-toolchain go1.25.1
+toolchain go1.25.3
 
 require (
 	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
@@ -11,13 +11,13 @@ require (
 	github.com/nekomeowww/xo v1.17.0
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/redis/rueidis v1.0.66
-	github.com/samber/lo v1.51.0
+	github.com/redis/rueidis v1.0.67
+	github.com/samber/lo v1.52.0
 	github.com/samber/mo v1.16.0
 	github.com/sourcegraph/conc v0.3.0
 	github.com/stretchr/testify v1.11.1
 	go.uber.org/zap v1.27.0
-	golang.org/x/text v0.29.0
+	golang.org/x/text v0.30.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
