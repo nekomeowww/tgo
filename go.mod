@@ -2,13 +2,13 @@ module github.com/nekomeowww/tgo
 
 go 1.24.0
 
-toolchain go1.25.3
+toolchain go1.25.4
 
 require (
 	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
 	github.com/gookit/color v1.6.0
-	github.com/nekomeowww/fo v1.6.0
-	github.com/nekomeowww/xo v1.18.0
+	github.com/nekomeowww/fo v1.6.1
+	github.com/nekomeowww/xo v1.18.1
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/redis/rueidis v1.0.68
