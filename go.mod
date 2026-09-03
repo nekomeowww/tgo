@@ -1,23 +1,23 @@
 module github.com/nekomeowww/tgo
 
-go 1.24.0
+go 1.25.0
 
-toolchain go1.25.4
+toolchain go1.27.1
 
 require (
 	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
-	github.com/gookit/color v1.6.0
-	github.com/nekomeowww/fo v1.6.1
+	github.com/gookit/color v1.6.1
+	github.com/nekomeowww/fo v1.7.0
 	github.com/nekomeowww/xo v1.18.1
-	github.com/nicksnyder/go-i18n/v2 v2.6.0
+	github.com/nicksnyder/go-i18n/v2 v2.6.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/redis/rueidis v1.0.68
-	github.com/samber/lo v1.52.0
-	github.com/samber/mo v1.16.0
+	github.com/redis/rueidis v1.0.77
+	github.com/samber/lo v1.53.0
+	github.com/samber/mo v1.17.0
 	github.com/sourcegraph/conc v0.3.0
-	github.com/stretchr/testify v1.11.1
-	go.uber.org/zap v1.27.1
-	golang.org/x/text v0.31.0
+	github.com/stretchr/testify v1.12.1
+	go.uber.org/zap v1.28.0
+	golang.org/x/text v0.41.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -37,8 +37,9 @@ require (
 	go.opentelemetry.io/otel/metric v1.38.0 // indirect
 	go.opentelemetry.io/otel/trace v1.38.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
+	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/exp v0.0.0-20240823005443-9b4947da3948 // indirect
-	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/net v0.57.0 // indirect
+	golang.org/x/sys v0.47.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
 )
